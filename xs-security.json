@@ -1,0 +1,11 @@
+{
+	"xsappname": "HANA-workshop-example",
+	"scopes": [{
+		"name": "$XSAPPNAME.ODATASERVICEUSER",
+		"description": "Enter"
+	}],
+	"role-templates": [{
+		"name": "GenericODataAccessRole",
+		"scope-references": ["$XSAPPNAME.ODATASERVICEUSER"]                                           
+	}]
+}
