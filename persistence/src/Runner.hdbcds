@@ -1,0 +1,40 @@
+namespace hanaws.persistence;
+
+@OData.publish : true
+context Runner {
+
+    /*@@layout{"layoutInfo":{"x":-86,"y":-65}}*/
+entity Runner {
+    	key id: Integer;
+    	selected: String(1) null;
+    	rank: Integer;
+    	number: Integer64; 
+    	name: String(1000);
+    	nation: String(1000);
+    	team: String(1000);
+    	yearOfBirth: Integer;
+    	gender: String(1);
+    	rankWithinGender: Integer;
+    	class: String(10);
+    	rankWithinClass: Integer;
+    	timeGross: String(10);
+    	timeNet: String(10);
+    	// country: Association to rc_country;
+	};
+	
+	/*@@layout{"layoutInfo":{"x":-353,"y":31}}*/
+entity rc_country {
+		key id: Integer;
+		isoCode: String(3);
+	};
+	
+	/*@@layout{"layoutInfo":{"x":184,"y":11}}*/
+entity Appointment {
+		key id: Integer;
+		runner: Association to Runner;
+		time: UTCDateTime;
+		comment: LargeString null;
+		success: Integer;
+	};
+
+};
