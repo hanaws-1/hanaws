@@ -13,8 +13,7 @@ modules:
     provides:
       - name: java_service_api
         properties:
-          url: '${default-url}'
-          service-url: '${default-url}'
+          service_url: ${default-url}
     requires:
       - name: hdi_persistence
         properties:
@@ -24,11 +23,11 @@ modules:
     type: html5
     path: basicui
     requires:
-      - name: java_service
+      - name: java_service_api
         group: destinations
         properties:
           name: java_service_be
-          url: '~{service-url}'
+          url: ~{service_url}
       - name: ws_uaa
 resources:
   - name: hdi_persistence
