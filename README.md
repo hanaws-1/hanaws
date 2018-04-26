@@ -2,8 +2,8 @@
 
 Example project for a simple multi target app.
 
-Consists of a db module, a java module exposing db artifacts by Odata and a UI5 web module.
-The model is intentionally very simple, but the app is functional.
+Consists of a db module, a java module exposing db artifacts by Odata and a simple web module.
+The model is intentionally very simple to demonstrate OData exposure via Java.
 
 Please adhere to the steps described in https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.02/en-US/e09f5225d61b40bb8761c756f138f2b0.html
 
