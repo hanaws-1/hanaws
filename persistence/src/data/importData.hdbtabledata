@@ -1,0 +1,54 @@
+{
+  "format_version": 1,
+  "imports": 
+   [
+    {
+     "import_settings" : {
+        "import_columns" : [ 
+    		"key",
+    		"selected",
+    		"rank",
+    		"number",
+    		"name",
+    		"nation",
+    		"team",
+    		"yearOfBirth",
+    		"gender",
+    		"rankWithinGender",
+    		"class",
+    		"rankWithinClass",
+    		"timeGross",
+    		"timeNet"
+        ]
+     },
+     "column_mappings": {
+		"key": 1,
+		"selected": 2,
+		"rank": 3,
+		"number": 4,
+		"name": 5,
+		"nation": 6,
+		"team": 7,
+		"yearOfBirth": 8,
+		"gender": 9,
+		"rankWithinGender": 9,
+		"class": 10,
+		"rankWithinClass": 11,
+		"timeGross": 12,
+		"timeNet": 13
+     },
+     "source_data" : { 
+       "data_type" : "CSV", 
+       "file_name" : "hanaws.persistence.data::es2017.csv", 
+       "has_header" : true,
+       "no_data_import": false,
+       "delete_existing_foreign_data": false,
+       "dialect"   : "HANA",  
+       "type_config" : { 
+          "delimiter" : "," 
+        } 
+      }, 
+     "target_table" : "hanaws.persistence::Runner.Runner"  
+    }
+   ] 
+}
