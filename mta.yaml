@@ -14,7 +14,7 @@ modules:
       - name: java_service_api
         properties:
           url: '${default-url}'
-          service_url: '${default-url}'
+          service-url: '${default-url}'
     requires:
       - name: hdi_persistence
         properties:
