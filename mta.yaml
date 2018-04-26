@@ -1,3 +1,16 @@
 ID: hanaws
 _schema-version: '2.0'
 version: 0.0.1
+
+modules:
+ - name: persistence
+   type: hdb
+   path: persistence
+   requires:
+    - name: hdi_persistence
+
+resources:
+ - name: hdi_persistence
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
