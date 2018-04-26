@@ -9,6 +9,20 @@ modules:
    requires:
     - name: hdi_persistence
 
+
+ - name: java_service
+   type: java
+   path: java_service
+   provides:
+    - name: java_service_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: hdi_persistence
+      properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+            {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
+
 resources:
  - name: hdi_persistence
    properties:
