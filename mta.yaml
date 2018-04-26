@@ -29,6 +29,14 @@ modules:
           name: java_service_be
           url: ~{service_url}
       - name: ws_uaa
+
+  
+
+
+  - name: ui5ui
+    type: html5
+    path: ui5ui
+
 resources:
   - name: hdi_persistence
     properties:
