@@ -1,12 +1,14 @@
 ID: hanaws
 _schema-version: '2.0'
 version: 0.0.1
+
 modules:
   - name: persistence
     type: hdb
     path: persistence
     requires:
-      - name: hdi_persistence
+      - name: hdi-container
+
   - name: java_service
     type: java
     path: java_service
@@ -15,34 +17,13 @@ modules:
         properties:
           service_url: ${default-url}
     requires:
-      - name: hdi_persistence
+      - name: persistence
+      - name: hdi-container
         properties:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml: {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
-      - name: ws_uaa
-  - name: basicui
-    type: html5
-    path: basicui
-    requires:
-      - name: java_service_api
-        group: destinations
-        properties:
-          name: java_service_be
-          url: ~{service_url}
-      - name: ws_uaa
-
-  
-
-
-  - name: ui5ui
-    type: html5
-    path: ui5ui
 
 resources:
-  - name: hdi_persistence
+  - name: hdi-container
+    type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: '${service-name}'
-    type: com.sap.xs.hdi-container
-  - name: ws_uaa
-    type: com.sap.xs.uaa
-    parameters:
-      path: ./xs-security.json
