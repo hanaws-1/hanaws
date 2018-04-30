@@ -1,0 +1,26 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	controllerName="ui5ui.controller.runner.Detail">
+	<Page title="{
+			parts: [
+				'db>name',
+				'db>gender'
+			],
+			formatter: '.formatRunnerDetailTitle'
+		}">
+		<ObjectHeader title="{db2>name}" intro="Zeit: {db>timeNet}">
+			<attributes>
+				<ObjectAttribute title="Gesamtplatzierung" text="{db>rank}" />
+				<ObjectAttribute title="Team" text="{db>team}" />
+				<ObjectAttribute title="Startnummer" text="{db>number}" />
+				<ObjectAttribute title="Platzierung in Altersklasse" text="{db>rankWithinClass} in {db>class}" />
+			</attributes>
+		</ObjectHeader>
+	
+		<Toolbar>
+			<ToolbarSpacer/>
+			<Button text="Termin" type="Accept" press="onAppointmentClicked" />
+		</Toolbar>
+	</Page>
+</mvc:View>

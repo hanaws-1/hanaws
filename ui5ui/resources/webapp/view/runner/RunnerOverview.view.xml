@@ -1,0 +1,35 @@
+<mvc:View controllerName="ui5ui.controller.runner.RunnerOverview" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<Page title="HANA Workshop - List">
+		<content>
+			<Panel headerText="Workshop">
+				<content>
+					<List 
+						headerText= "Läufer/innen" 
+						items="{
+						    path: 'db>/Runner',
+						    sorter: {
+						        path: 'rank'
+						    }
+						}"
+						growing="true"
+						growingThreshold="20">
+						<items>	
+							<ObjectListItem 
+								icon="{
+									path: 'db>gender',
+									formatter: '.formatGenderIconURI'
+								}"
+								title="{db>name}" 
+								intro="{db>team}"
+								number="{db>rankWithinClass}" 
+								numberUnit="in {db>class}" 
+								type="Navigation"
+								press="onPressRunner" />
+						</items>
+					</List>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>
