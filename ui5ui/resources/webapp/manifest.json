@@ -14,6 +14,15 @@
 		"sourceTemplate": {
 			"id": "hanatemplates.basicSAPUI5ApplicationProject",
 			"version": "0.0.0"
+		},
+		"dataSources" : {
+			"defaultContainer" : {
+				"uri" : "https://hxehost:51006/java/odata/v4/hanaws.persistence._.Runner/",
+				"type" : "OData",
+				"settings" : {
+					"odataVersion" : "4.0"
+				}
+			}
 		}
 	},
 
@@ -64,6 +73,12 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "ui5ui.i18n.i18n"
+				}
+			},
+			"db": {
+				"dataSource" : "defaultContainer",
+				"settings" : {
+					"synchronizationMode" : "None"
 				}
 			}
 		},
