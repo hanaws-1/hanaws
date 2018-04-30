@@ -1,0 +1,59 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	controllerName="ui5ui.controller.appointment.Overview">
+	<Page title="Übersicht Termine">
+		<content>
+			<Panel headerText="Termine für {db>name}">
+				<content>
+					<List 
+						headerText= "Termine" 
+						items="{db>Appointments}"
+						mode="Delete"
+						delete="onPressDelete"
+						growing="true"
+						growingThreshold="20">
+						<headerToolbar>
+							<OverflowToolbar>
+								<ToolbarSpacer/>
+								<!-- 
+								<SearchField id="maxPrice" liveChange="onFilter">
+									<layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
+								</SearchField>
+								-->
+								<Button icon="sap-icon://add" press="onPressCreate"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<items>	
+							<ObjectListItem 
+								title="{
+				                    path: 'db>time', 
+				                    type: 'sap.ui.model.type.DateTime',
+				                    formatOptions: {
+                                        pattern: 'dd.MM.yyyy hh:ss'
+                                    }
+                                }" 
+								type="Detail"
+								detailPress="onPressAppointment">
+								<firstStatus>
+								    <ObjectStatus 
+								        state="{
+								            path: 'db>success',
+								            formatter: '.formatSuccessState'
+								        }"
+								        text="{
+								            path: 'db>success',
+								            formatter: '.formatSuccessText'
+							            }" />
+								</firstStatus>
+								<attributes>
+                    				<ObjectAttribute text="{db>comment}" />
+                                </attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>
