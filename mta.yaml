@@ -22,8 +22,23 @@ modules:
         properties:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml: {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
 
+  - name: basicui
+    type: html5
+    path: basicui
+    requires:
+      - name: java_service_api
+        group: destinations
+        properties:
+          name: java_service_be
+          url: ~{service_url}
+      - name: ws_uaa
+
 resources:
   - name: hdi-container
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: '${service-name}'
+  - name: ws_uaa
+    type: com.sap.xs.uaa
+    parameters:
+      path: ./xs-security.json
