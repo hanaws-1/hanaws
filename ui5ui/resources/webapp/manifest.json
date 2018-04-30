@@ -17,7 +17,7 @@
 		},
 		"dataSources" : {
 			"defaultContainer" : {
-				"uri" : "https://hxehost:51006/java/odata/v4/hanaws.persistence._.Runner/",
+				"uri" : "/java/odata/v4/hanaws.persistence._.Runner/",
 				"type" : "OData",
 				"settings" : {
 					"odataVersion" : "4.0"
@@ -76,9 +76,11 @@
 				}
 			},
 			"db": {
+				"type": "sap.ui.model.odata.v4.ODataModel",
 				"dataSource" : "defaultContainer",
 				"settings" : {
-					"synchronizationMode" : "None"
+					"synchronizationMode" : "None",
+					"operationMode": "Server"
 				}
 			}
 		},
