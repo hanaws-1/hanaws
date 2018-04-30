@@ -5,7 +5,7 @@
     {
      "import_settings" : {
         "import_columns" : [ 
-    		"key",
+    		"id",
     		"selected",
     		"rank",
     		"number",
@@ -22,7 +22,7 @@
         ]
      },
      "column_mappings": {
-		"key": 1,
+		"id": 1,
 		"selected": 2,
 		"rank": 3,
 		"number": 4,
@@ -31,11 +31,11 @@
 		"team": 7,
 		"yearOfBirth": 8,
 		"gender": 9,
-		"rankWithinGender": 9,
-		"class": 10,
-		"rankWithinClass": 11,
-		"timeGross": 12,
-		"timeNet": 13
+		"rankWithinGender": 10,
+		"class": 11,
+		"rankWithinClass": 12,
+		"timeGross": 13,
+		"timeNet": 14
      },
      "source_data" : { 
        "data_type" : "CSV", 
@@ -45,7 +45,7 @@
        "delete_existing_foreign_data": false,
        "dialect"   : "HANA",  
        "type_config" : { 
-          "delimiter" : "," 
+          "delimiter" : ","
         } 
       }, 
      "target_table" : "hanaws.persistence::Runner.Runner"  
