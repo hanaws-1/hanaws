@@ -52,7 +52,7 @@ sap.ui.define([
 					reject(response);
 				}
     	    }
-			oDataModel.createEntry('/Appointment', {
+			oDataModel.create('/Appointment', {
 			    properties: data
 		    });
 			oDataModel.attachRequestCompleted(function(event) {
@@ -78,15 +78,14 @@ sap.ui.define([
 				return _update(oDataModel, appointmentId, data);
 			}
 		},
-		createNewAppointment: function(oDataModel, runnerPath) {
-			var runnerName = oDataModel.getProperty('/' + runnerPath + '/name');
-			var runnerId = oDataModel.getProperty('/' + runnerPath + '/id');
+		createNewAppointment: function(runnerData) {
+			var runnerName = runnerData ? runnerData.name : "";
+			var runnerId = runnerData ? runnerData.id : null;
 			return Promise.resolve({
-				id: -1,
 				"Runner": {
 					name: runnerName
 				},
-				"runner.id": runnerId,
+				"runnerId": runnerId,
 				"time": new Date(),
 				comment: 'New comment',
 				success: 0

@@ -1,5 +1,4 @@
-/*
-package com.company.hanaws.java_service.extensiontemplate;
+/* package com.company.hanaws.java_service.extensiontemplate;
 
 // * <h1>Extension Templates!</h1>
 // * CDS supports only read & query operations and does not support DML operations 
@@ -36,45 +35,25 @@ import com.sap.gateway.v4.rt.api.extensions.ExtensionException;
 import com.sap.gateway.v4.rt.api.extensions.RequestType;
 import com.sap.gateway.v4.rt.cds.api.CDSDSParams;
 
-public class CustomerCUDExt {
-	final static Logger logr = LoggerFactory.getLogger("CustomerCUDExt");
+public class AppointmentExtension {
+	final static Logger LOG = LoggerFactory.getLogger("AppointmentExtension");
 
 	// * This method encapsulates CREATE functionality for Customer entity.
-	@ExtendDataProvider(entitySet = { "Customer" }, requestTypes = RequestType.CREATE)
+	@ExtendDataProvider(entitySet = { "Appointment" }, requestTypes = RequestType.CREATE)
 	public void createCustomer(ExtensionContext ecx) throws ODataApplicationException, ExtensionException {
-		String Street = null, Area = null, City = null, State = null, Country = null;
-		Connection conn = ((CDSDSParams) ecx.getDSParams()).getConnection();
+
+		final Connection conn = ((CDSDSParams) ecx.getDSParams()).getConnection();
+		final DataProviderExtensionContext extCtx = ecx.asDataProviderContext();
+		final DeserializerResult payload = extCtx.getDeserializerResult();
+
+		// Get the entity
+		final Entity ent = payload.getEntity();
 
 		PreparedStatement ps = null;
 
-		DataProviderExtensionContext extCtx = ecx.asDataProviderContext();
-		DeserializerResult payload = extCtx.getDeserializerResult();
-		// Get the entity
-		Entity ent = payload.getEntity();
-
-		
-		// Entity contains a complex type 'CustAddress'. Read the complex type
-		// properties as following
-		List<Property> custAddress = ent.getProperty("CustAddress").asComplex().getValue();
-
-		for (Property prop : custAddress) {
-			String propName = prop.getName();
-			if (propName.equals("Street")) {
-				Street = prop.getValue().toString();
-			} else if (propName.equals("Area")) {
-				Area = prop.getValue().toString();
-			} else if (propName.equals("City")) {
-				City = prop.getValue().toString();
-			} else if (propName.equals("State")) {
-				State = prop.getValue().toString();
-			} else if (propName.equals("Country")) {
-				Country = prop.getValue().toString();
-			}
-		}
-
 		// Get the value of other properties
-		int CustomerId = (Integer) ent.getProperty("CustomerID").getValue();
-		String CustType = (String) ent.getProperty("Type").getValue();
+		final int id = (Integer) ent.getProperty("id").getValue();
+		final int runnerId = (String) ent.getProperty("runner").getValue();
 		String CustomerName = (String) ent.getProperty("CustomerName").getValue();
 		boolean Premium = (Boolean) ent.getProperty("Premium").getValue();
 

@@ -9,7 +9,7 @@ sap.ui.define([
 		},
 		_onRouteMatched: function (event) {
 			var path = event.getParameter('arguments').runnerPath;
-			this.getView().bindElement({
+			this.getView().byId('runnerDetailPage').bindElement({
 				model: 'db',
 				path: '/' + path
 			});				
@@ -19,14 +19,16 @@ sap.ui.define([
 			if (gender === 'M') {
 				runnerTitle = 'Läufer';
 			} else if (gender === 'W') {
-				runnerTitle = 'Läuferin'
+				runnerTitle = 'Läuferin';
 			}
 			return runnerTitle + ' ' + name;
 		},
 		onAppointmentClicked: function() {
 			var router = sap.ui.core.UIComponent.getRouterFor(this);
+			var bindingContext =  this.getView().byId('runnerDetailPage').getBindingContext("db");
+			var path = bindingContext.getPath();
 			router.navTo("appointment", {
-				runnerPath: this.getView().getBindingContext("db").getPath().substring(1) // cut off the leading '/' which is not legal in a route parameter
+				runnerPath: path.substring(1) // cut off the leading '/' which is not legal in a route parameter
 			});
 		}
 	});

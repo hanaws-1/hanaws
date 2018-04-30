@@ -8,7 +8,8 @@
 				'db>gender'
 			],
 			formatter: '.formatRunnerDetailTitle'
-		}">
+		}"
+		id="runnerDetailPage">
 		<ObjectHeader title="{db2>name}" intro="Zeit: {db>timeNet}">
 			<attributes>
 				<ObjectAttribute title="Gesamtplatzierung" text="{db>rank}" />

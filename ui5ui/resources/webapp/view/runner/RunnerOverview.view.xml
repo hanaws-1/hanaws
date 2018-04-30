@@ -5,6 +5,7 @@
 			<Panel headerText="Workshop">
 				<content>
 					<List 
+						id="runnerList"
 						headerText= "Läufer/innen" 
 						items="{
 						    path: 'db>/Runner',

@@ -80,7 +80,8 @@
 				"dataSource" : "defaultContainer",
 				"settings" : {
 					"synchronizationMode" : "None",
-					"operationMode": "Server"
+					"operationMode": "Server",
+					"autoExpandSelect": true
 				}
 			}
 		},

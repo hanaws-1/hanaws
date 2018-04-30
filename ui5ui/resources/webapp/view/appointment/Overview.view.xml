@@ -7,8 +7,14 @@
 			<Panel headerText="Termine für {db>name}">
 				<content>
 					<List 
+						id="appointmentList"
 						headerText= "Termine" 
-						items="{db>Appointments}"
+						items="{
+							path: 'db>/Appointment',
+							parameters: {
+								$$updateGroupId : 'appointmentGroup'
+							}
+						}"
 						mode="Delete"
 						delete="onPressDelete"
 						growing="true"
@@ -27,11 +33,7 @@
 						<items>	
 							<ObjectListItem 
 								title="{
-				                    path: 'db>time', 
-				                    type: 'sap.ui.model.type.DateTime',
-				                    formatOptions: {
-                                        pattern: 'dd.MM.yyyy hh:ss'
-                                    }
+				                    path: 'db>time'
                                 }" 
 								type="Detail"
 								detailPress="onPressAppointment">

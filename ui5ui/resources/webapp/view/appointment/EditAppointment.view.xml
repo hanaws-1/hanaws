@@ -39,7 +39,7 @@
 				<Label text="erfolgreich?" />
 				<Switch state="{
 				            path: 'local>/success', 
-				            type: 'de.exxcellent.tphana.service.BooleanIntType'
+				            type: 'ui5ui.service.BooleanIntType'
 				        }"
 				        type="AcceptReject"
 				        visible="{

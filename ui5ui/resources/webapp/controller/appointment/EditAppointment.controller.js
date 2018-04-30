@@ -37,7 +37,7 @@ sap.ui.define([
 		onPressAppointment: function(event) {
 			var router = sap.ui.core.UIComponent.getRouterFor(this);
 			router.navTo("editAppointment", {
-				appointmentId: event.getSource().getBindingContext("db").getObject().id // cut off the leading '/' which is not legal in a route parameter
+				appointmentCtx: event.getSource().getBindingContext("db") // cut off the leading '/' which is not legal in a route parameter
 			});
 		},
 		
