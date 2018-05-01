@@ -23,18 +23,6 @@ modules:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml: {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
       - name: ws_uaa
 
-  - name: basicui
-    type: html5
-    path: basicui
-    requires:
-      - name: ws_uaa
-      - name: java_service_api
-        group: destinations
-        properties:
-          name: java_service_be
-          url: ~{service_url}
-          forwardAuthToken: true
-
   - name: ui5ui
     type: html5
     path: ui5ui
