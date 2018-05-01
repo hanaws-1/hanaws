@@ -78,17 +78,22 @@ sap.ui.define([
 				return _update(oDataModel, appointmentId, data);
 			}
 		},
-		createNewAppointment: function(runnerData) {
-			var runnerName = runnerData ? runnerData.name : "";
-			var runnerId = runnerData ? runnerData.id : null;
-			return Promise.resolve({
-				"Runner": {
-					name: runnerName
-				},
-				"runnerId": runnerId,
-				"time": new Date(),
-				comment: 'New comment',
-				success: 0
+		createNewAppointment: function(oDataModel, runnerPath) {
+			var runnerContextBinding = oDataModel.bindContext(runnerPath);
+			runnerContextBinding.initialize();
+			return runnerContextBinding.getContext().requestProperty('/id').then(function (runnerId) {
+				var appointmentsPath = runnerPath + '/' + 'appointments';
+				var listBinding = oDataModel.bindList(appointmentsPath);
+				runnerContextBinding.destroy();
+				return listBinding.create({
+          "Runner": {
+            name: runnerName
+          },
+          "runnerId": runnerId,
+          "time": new Date(),
+          comment: 'New comment',
+          success: 0
+				});
 			});
 		}
 	};
