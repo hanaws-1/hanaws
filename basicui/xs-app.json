@@ -1,9 +1,0 @@
-{
-	"welcomeFile": "index.html",
-	"authenticationMethod": "none",
-	"routes": [{
-		"source": "/java/odata/v4",
-		"authenticationType": "xsuaa",
-		"destination": "java_service_be"
-	}]
-}
