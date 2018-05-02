@@ -14,19 +14,20 @@ sap.ui.define([
 			router.getRoute('createAppointment').attachPatternMatched(this._onRouteMatched, this);
 		},
 		_onRouteMatched: function(event) {
-		    var args = event.getParameter('arguments');
+			var that = this;
+			var args = event.getParameter('arguments');
 			var appointmentId = args.appointmentId;
 			var runnerPath = args.runnerPath;
 			var view = this.getView();
 			var localModel = new JSONModel();
 			view.setModel(localModel, 'local');
-			if (!appointmentId && !!runnerPath) {
-			    AppointmentService.createNewAppointment(view.getModel('db'), runnerPath).then(function(data) {
-			        localModel.setData(data);
-			    }); 
+			if (!appointmentId && runnerPath) {
+			    AppointmentService.createNewAppointment(view.getModel('db'), runnerPath).then(function(context) {
+			    	that.getView().bindElement(context);
+					});
 			} else {
 			    AppointmentService.loadAppointment(view.getModel('db'), appointmentId).then(function(data) {
-			        localModel.setData(data);
+						localModel.setData(data);
 				    localModel.setProperty('/appointmentId', appointmentId);
     			}).catch(function(error) {
 	    			jQuery.sap.log.error(error);
